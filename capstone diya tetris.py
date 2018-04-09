@@ -1,14 +1,8 @@
-import turtle
 import os
 import random
 import math
 import spgl
 
-wn = turtle.Screen()
-wn.bgcolor("black")
-wn.title("Tetris")
-#wn.bgpic("kbgame-bg.gif")
-#wn.register_shape("heart-20x20.gif")
 
 #Size of things
 	#Columns = 10
@@ -57,11 +51,11 @@ class Tetris(object):
 		
 	def move_left(self):
 		#self.setheading(180)
-		self.fd(-10)
+		self.forward(-10)
 		
 	def move_right(self):
 		#self.setheading(0)
-		self.fd(10)
+		self.forward(10)
 		
 	def move_down(self):
 		self.speed += 1
@@ -78,7 +72,7 @@ class Tetris(object):
 	def pause(self):
 		#quit or resume
 		pass
-		
+			
 class Border(object):
 	def __init__(self):
 		pass
@@ -122,15 +116,13 @@ def isCollision(t1, t2):
 player = Tetris()
 
 #Commands
-turtle.listen()
-turtle.onkey(player.rotate_block, "Up")
-turtle.onkey(player.move_left, "Left")
-turtle.onkey(player.move_right, "Right")
-turtle.onkey(player.move_down, "Down")
-turtle.onkey(player.hold, "c")
-turtle.onkey(player.instadrop, "space")
-turtle.onkey(player.pause, "Escape")
-
+game.set_keyboard_binding(spgl.KEY_UP, player.rotate_block)
+game.set_keyboard_binding(spgl.KEY_LEFT, player.move_left)
+game.set_keyboard_binding(spgl.KEY_RIGHT, player.move_right)
+game.set_keyboard_binding(spgl.KEY_DOWN, player.move_down)
+game.set_keyboard_binding(spgl.KEY_SPACE, player.instadrop)
+game.set_keyboard_binding(spgl.KEY_ESCAPE, player.pause)
+game.set_keyboard_binding(spgl.KEY_SHIFT_LEFT, player.hold)
 
 while True:
 	game.tick()
