@@ -76,7 +76,8 @@ class Tetris(object):
 		pass
 		
 	def pause(self):
-		
+		#quit or resume
+		pass
 		
 class Border(object):
 	def __init__(self):
